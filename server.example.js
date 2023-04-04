@@ -6,7 +6,7 @@ import { addNote } from "./notes.controller";
 const server = http.createServer(async (req, res) => {
   if (req.method === "GET") {
     const content = await fs.readFile(
-      path.join(basePath, "index.html"),
+      path.join(basePath, "index.ejs"),
       "utf-8"
     );
 
