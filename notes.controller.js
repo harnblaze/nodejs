@@ -31,7 +31,16 @@ async function printNotes() {
   });
 }
 
+async function removeNoteById(id) {
+  const notes = await getNotes();
+  const newNotes = notes.filter((note) => note.id !== id.toString());
+  console.log(newNotes, id);
+  await fs.writeFile(notesPath, JSON.stringify(newNotes));
+  console.log(chalk.green.inverse("Note was removed"));
+}
+
 module.exports = {
   addNote,
   printNotes,
+  removeNoteById,
 };
